@@ -14,16 +14,16 @@ static void drive(n4s_t *n4s)
         n4s->request = CAR_FORWARD;
         while (car_forward(n4s, CAR_RIGHT_SPEED) != true);
         n4s->request = GET_INFO_LIDAR;
-    
+
         // Get info lidar
         while(get_info_lidar(n4s) != true);
-    
+
         // Check if the car is blocked
         if (n4s->answer->float_array[15] > 1000)
             n4s->request = CAR_FORWARD;
         else
             n4s->request = CAR_BACKWARDS;
-        
+
         // Turn
         if (n4s->answer->float_array[0] < n4s->answer->float_array[31]) {
             n4s->request = WHEELS_DIR;

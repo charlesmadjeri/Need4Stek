@@ -5,11 +5,25 @@
 ** send_command
 */
 
-#include "../include/my.h"
+#include "../include/n4s.h"
 
-char* send_command(const char* command)
+char* send_command_get(const char* command)
 {
-    fprintf(stdout, "%s\n", command);
+    my_putstr(command);
+
+    char response[2048];
+
+    if (getline(response, sizeof(response), stdin) == NULL)
+        return NULL;
+
+    response[strcspn(response, "\n")] = '\0';
+
+    return strdup(response);
+}
+
+char* send_command_post(const char* command)
+{
+    my_putstr(command);
 
     char response[2048];
 

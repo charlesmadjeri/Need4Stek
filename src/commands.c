@@ -35,20 +35,22 @@ bool post(n4s_t *n4s, const char *command)
 bool post_with_value(n4s_t *n4s, const char *command, float value)
 {
     char command_with_value[2048];
+    char *response = NULL;
+    size_t response_size = 0;
 
     sprintf(command_with_value, "%s:%.2f\n", command, value);
-
     my_putstr(command_with_value);
 
-    char response[2048];
-    if (getline(response, sizeof(response), stdin) == NULL)
+    if (getline(&response, &response_size, stdin) == -1) {
+        free(response);
         return false;
-
+    }
     response[strcspn(response, "\n")] = '\0';
 
     n4s->answer = calloc(1, sizeof(answer_t));
     n4s->answer->answer = strdup(response);
     parse_answer(n4s);
 
+    free(response);
     return true;
 }

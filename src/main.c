@@ -9,7 +9,7 @@
 
 static void drive(n4s_t *n4s)
 {
-    
+
 }
 
 void algo(n4s_t *n4s)

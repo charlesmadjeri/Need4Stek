@@ -36,6 +36,9 @@
     #define END_SIMULATION 53
     #define NONE 54
 
+    #define CAR_RIGHT_SPEED 0.5
+    #define CAR_TURN_SPEED 0.5
+
 // Structures //
 
     enum request_e {
@@ -69,6 +72,7 @@
         char *code_str;
         char *additional_info;
         float float_value;
+        float *float_array;
         long long long_value;
     } answer_t;
 
@@ -80,6 +84,8 @@
 
 // Prototypes //
     n4s_t *init_n4s(void);
+
+    void free_n4s(n4s_t *n4s);
     void my_putstr(char const *str);
 
 //  Parser:

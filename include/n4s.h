@@ -80,6 +80,7 @@
 
 // Prototypes //
     n4s_t *init_n4s(void);
+    void my_putstr(char const *str);
 
 //  Parser:
     void parse_answer(n4s_t *n4s);

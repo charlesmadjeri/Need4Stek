@@ -15,9 +15,14 @@ static answer_t *init_answer(void)
     answer->answer = malloc(sizeof(char *));
     answer->status = 0;
     answer->answer_array = malloc(sizeof(char *) * 6);
+    for (int i = 0; i < 6; i++)
+        answer->answer_array[i] = malloc(sizeof(char *));
     answer->additional_info = malloc(sizeof(char *));
     answer->code_str = malloc(sizeof(char *));
     answer->float_value = 0;
+    answer->float_array = malloc(sizeof(float) * 32);
+    for (int i = 0; i < 32; i++)
+        answer->float_array[i] = 0;
     answer->long_value = 0;
     answer->value_id = 0;
     answer->format = 0;

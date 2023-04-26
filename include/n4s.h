@@ -36,8 +36,8 @@
     #define END_SIMULATION 53
     #define NONE 54
 
-    #define CAR_RIGHT_SPEED 0.5
-    #define CAR_TURN_SPEED 0.5
+    #define CAR_RIGHT_SPEED 0.7
+    #define CAR_TURN_SPEED 0.7
 
 // Structures //
 

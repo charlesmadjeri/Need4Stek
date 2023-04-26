@@ -7,7 +7,7 @@
 
 #include "../../include/n4s.h"
 
-void parse_other_answer(n4s *n4s)
+void parse_other_answer(n4s_t *n4s)
 {
     switch ((int)n4s->request) {
         case GET_CURRENT_SPEED:
@@ -25,7 +25,7 @@ void parse_other_answer(n4s *n4s)
     }
 }
 
-void parse_answer(n4s *n4s)
+void parse_answer(n4s_t *n4s)
 {
     switch ((int)n4s->request) {
         case START_SIMULATION:

@@ -11,26 +11,32 @@ char* send_command_get(const char* command)
 {
     my_putstr(command);
 
-    char response[2048];
+    char *response = NULL;
+    size_t response_size = 0;
 
-    if (getline(response, sizeof(response), stdin) == NULL)
+    if (getline(&response, &response_size, stdin) == -1) {
+        free(response);
         return NULL;
+    }
 
     response[strcspn(response, "\n")] = '\0';
 
-    return strdup(response);
+    return response;
 }
 
 char* send_command_post(const char* command)
 {
     my_putstr(command);
 
-    char response[2048];
+    char *response = NULL;
+    size_t response_size = 0;
 
-    if (getline(response, sizeof(response), stdin) == NULL)
+    if (getline(&response, &response_size, stdin) == -1) {
+        free(response);
         return NULL;
+    }
 
     response[strcspn(response, "\n")] = '\0';
 
-    return strdup(response);
+    return response;
 }

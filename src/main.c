@@ -36,6 +36,7 @@ static void drive(n4s_t *n4s)
             while (wheels_dir(n4s, -0.005) != true);
         }
     }
+
 }
 
 void algo(n4s_t *n4s)

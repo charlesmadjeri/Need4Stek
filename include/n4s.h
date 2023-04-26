@@ -88,4 +88,11 @@
     void parse_answer_type_3(char *answer_string, answer_t *answer);
     void parse_answer_type_4(char *answer_string, answer_t *answer);
 
+// Post //
+    bool start_simulation(n4s_t *n4s);
+    bool stop_simulation(n4s_t *n4s);
+    bool car_forward(n4s_t *n4s);
+    bool car_backwards(n4s_t *n4s);
+    bool wheels_dir(n4s_t *n4s);
+
 #endif /* !HEADER_H_ */

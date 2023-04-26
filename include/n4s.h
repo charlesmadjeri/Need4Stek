@@ -38,7 +38,7 @@
 
 // Structures //
 
-    typedef enum request_s {
+    enum request_e {
         START_SIMULATION_E = START_SIMULATION,
         CAR_FORWARD_E = CAR_FORWARD,
         CAR_BACKWARDS_E = CAR_BACKWARDS,
@@ -52,15 +52,15 @@
         GET_INFO_SIMTIME_E = GET_INFO_SIMTIME,
         END_SIMULATION_E = END_SIMULATION,
         NONE_E = NONE
-    } request_t;
+    };
 
-    typedef struct get_s {
+    typedef struct get {
         char *command;
         char **command_array;
 
     } get_t;
 
-    typedef struct answer_s {
+    typedef struct answer {
         char *answer;
         char **answer_array;
         int format;
@@ -72,16 +72,17 @@
         long long long_value;
     } answer_t;
 
-    typedef struct n4s_s {
+    typedef struct n4s {
         get_t *command;
         answer_t *answer;
-        request_t request;
-    } n4s;
+        enum request_e request;
+    } n4s_t;
 
 // Prototypes //
+    n4s_t *init_n4s(void);
 
 //  Parser:
-    void parse_answer(n4s *n4s);
+    void parse_answer(n4s_t *n4s);
     void parse_answer_type_1(char *answer_string, answer_t *answer);
     void parse_answer_type_2(char *answer_string, answer_t *answer);
     void parse_answer_type_3(char *answer_string, answer_t *answer);

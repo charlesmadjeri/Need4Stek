@@ -24,7 +24,7 @@ RES_DIR = ressources
 BONUS_DIR = bonus
 LIB_DIR = lib
 
-TARGET = n4s
+TARGET = ai
 
 ########################
 ### SOURCES FILES    ###

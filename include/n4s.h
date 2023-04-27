@@ -16,6 +16,8 @@
     #include <errno.h>
     #include <fcntl.h>
     #include <math.h>
+    #include <time.h>
+    #include <errno.h>
     #include <sys/stat.h>
     #include <stdbool.h>
     #pragma once
@@ -87,8 +89,8 @@
 
     void free_n4s(n4s_t *n4s);
     void my_putstr(char const *str);
-    char* send_command_get(const char* command);
-    char* send_command_post(const char* command);
+    char* send_command(const char* command);
+    bool get_info(n4s_t *n4s, const char *command);
 
 //  Parser //
     void parse_answer(n4s_t *n4s);
@@ -98,7 +100,6 @@
     void parse_answer_type_4(char *answer_string, answer_t *answer);
 
 // Post //
-    bool post(n4s_t *n4s, const char *command);
     bool post_with_value(n4s_t *n4s, const char *command, float value);
     bool start_simulation(n4s_t *n4s);
     bool stop_simulation(n4s_t *n4s);
@@ -108,7 +109,6 @@
 
 
 // GET //
-    bool get(n4s_t *n4s, const char *command);
     bool get_info_lidar(n4s_t *n4s);
     bool get_current_wheels(n4s_t *n4s);
     bool cycle_wait(n4s_t *n4s);

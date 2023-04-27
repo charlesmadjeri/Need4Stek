@@ -7,21 +7,9 @@
 
 #include "../include/n4s.h"
 
-bool get(n4s_t *n4s, const char *command)
+bool get_info(n4s_t *n4s, const char *command)
 {
-    char *response = send_command_get(command);
-    if (!response)
-        return false;
-    n4s->answer = calloc(1, sizeof(answer_t));
-    n4s->answer->answer = strdup(response);
-    parse_answer(n4s);
-
-    return true;
-}
-
-bool post(n4s_t *n4s, const char *command)
-{
-    char *response = send_command_post(command);
+    char *response = send_command(command);
 
     if (!response)
         return false;
@@ -38,7 +26,7 @@ bool post_with_value(n4s_t *n4s, const char *command, float value)
     char *response = NULL;
     size_t response_size = 0;
 
-    sprintf(command_with_value, "%s:%.2f\n", command, value);
+    sprintf(command_with_value, "%s:%.1f\n", command, value);
     my_putstr(command_with_value);
 
     if (getline(&response, &response_size, stdin) == -1) {

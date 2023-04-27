@@ -9,15 +9,15 @@
 
 bool get_car_speed_max(n4s_t *n4s)
 {
-    return get(n4s, "GET_CAR_SPEED_MAX\n");
+    return get_info(n4s, "GET_CAR_SPEED_MAX\n");
 }
 
 bool get_car_speed_min(n4s_t *n4s)
 {
-    return get(n4s, "GET_CAR_SPEED_MIN\n");
+    return get_info(n4s, "GET_CAR_SPEED_MIN\n");
 }
 
 bool get_current_speed(n4s_t *n4s)
 {
-    return get(n4s, "GET_CURRENT_SPEED\n");
+    return get_info(n4s, "GET_CURRENT_SPEED\n");
 }

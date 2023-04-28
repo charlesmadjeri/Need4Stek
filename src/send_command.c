@@ -9,16 +9,14 @@
 
 char* send_command(const char* command)
 {
-    my_putstr(command);
-
     char *response = NULL;
-    size_t response_size = 0;
 
+    my_putstr(command);
+    size_t response_size = 0;
     if (getline(&response, &response_size, stdin) == -1) {
         free(response);
         return NULL;
     }
-
     response[strcspn(response, "\n")] = '\0';
 
     return response;

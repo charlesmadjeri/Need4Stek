@@ -38,10 +38,26 @@
     #define END_SIMULATION 53
     #define NONE 54
 
-    #define CAR_RIGHT_SPEED 0.7
-    #define CAR_TURN_SPEED 0.7
+    #define LIDAR_CENTER 15
+    #define LIDAR_LEFT 0
+    #define LIDAR_RIGHT 31
+    #define CLEAR_DISTANCE 150
+    #define MAX_SPEED 0.1
+    #define MIN_SPEED 0.001
+
+// PID //
+    #define PID_KP 1
+    #define PID_KI 0.05
+    #define PID_KD 0.01
 
 // Structures //
+    typedef struct {
+        float kp;
+        float ki;
+        float kd;
+        float prev_error;
+        float integral;
+    } pid_controller_t;
 
     enum request_e {
         START_SIMULATION_E = START_SIMULATION,
@@ -86,9 +102,10 @@
 
 // Prototypes //
     n4s_t *init_n4s(void);
-
     void free_n4s(n4s_t *n4s);
+
     void my_putstr(char const *str);
+
     char* send_command(const char* command);
     bool get_info(n4s_t *n4s, const char *command);
 
@@ -107,7 +124,6 @@
     bool car_backwards(n4s_t *n4s, float value);
     bool wheels_dir(n4s_t *n4s, float value);
 
-
 // GET //
     bool get_info_lidar(n4s_t *n4s);
     bool get_current_wheels(n4s_t *n4s);
@@ -117,5 +133,14 @@
     bool get_current_speed(n4s_t *n4s);
     bool get_car_speed_max(n4s_t *n4s);
 
+// Algo //
+    void algo(n4s_t *n4s);
+    float calculate_speed(float distance);
+    void calculate_average_distances(float *float_array,
+    float *right_avg, float *center_avg, float *left_avg);
+
+    void check_and_drive_forward(n4s_t *n4s,
+    float center_avg, float left_avg);
+    void set_wheel_direction(n4s_t *n4s, float pid_output);
 
 #endif /* !HEADER_H_ */

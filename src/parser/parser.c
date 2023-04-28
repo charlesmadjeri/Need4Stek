@@ -27,6 +27,8 @@ void parse_other_answer(n4s_t *n4s)
 
 void parse_answer(n4s_t *n4s)
 {
+    if (n4s->answer->answer == NULL || n4s->answer->answer[0] == '\0')
+        return;
     switch ((int)n4s->request) {
         case START_SIMULATION:
             parse_answer_type_1(n4s->answer->answer, n4s->answer); break;

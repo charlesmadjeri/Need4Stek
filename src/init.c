@@ -6,19 +6,19 @@
 */
 
 #include "../include/n4s.h"
-#include <stdlib.h>
 
 static answer_t *init_answer(void)
 {
     answer_t *answer = malloc(sizeof(answer_t));
 
-    answer->answer = malloc(sizeof(char *));
     answer->status = 0;
     answer->answer_array = malloc(sizeof(char *) * 6);
     for (int i = 0; i < 6; i++)
-        answer->answer_array[i] = malloc(sizeof(char *));
-    answer->additional_info = malloc(sizeof(char *));
-    answer->code_str = malloc(sizeof(char *));
+        answer->answer_array[i] = NULL;
+    answer->answer = NULL;
+    answer->additional_info = NULL;
+    answer->code_str = NULL;
+
     answer->float_value = 0;
     answer->float_array = malloc(sizeof(float) * 32);
     for (int i = 0; i < 32; i++)
@@ -41,22 +41,13 @@ static get_t *init_command(void)
     return command;
 }
 
-static enum request_e init_request(void)
-{
-    enum request_e *request = malloc(sizeof(enum request_e));
-
-    *request = NONE;
-
-    return *request;
-}
-
 n4s_t *init_n4s(void)
 {
     n4s_t *n4s = malloc(sizeof(n4s_t));
 
     n4s->answer = init_answer();
     n4s->command = init_command();
-    n4s->request = init_request();
+    n4s->request = NONE;
 
     return n4s;
 }

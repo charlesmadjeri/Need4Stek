@@ -36,7 +36,7 @@ void algo(n4s_t *n4s)
         error = left_avg - right_avg;
         pid_output = pid_update(&pid, error, dt);
 
-        check_and_drive_forward(n4s, center_avg, left_avg);
+        check_and_drive_forward(n4s, 0, 0);
         set_wheel_direction(n4s, pid_output);
     }
 }
